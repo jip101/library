@@ -1,3 +1,59 @@
+:root {
+--shadow-color: #2e2d2d;
+}
+
+* {
+    font-family: monospace;
+}
+
 body {
-    background-color: lightgray;
+    margin: 0;
+    padding: 0;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    padding: 15px 5px;
+    flex: 0.1;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    }
+
+#title {
+    align-self: flex-start;
+    font-size: 5em;
+    font-weight: 900;
+    color: rgb(95, 88, 88);
+    padding-left: 30px;
+    text-shadow: 1px 3px 2px var(--shadow-color);
+}
+
+#addBook {
+    align-self: flex-end;
+    background-color: lightblue;
+}
+
+main {
+    padding: 2em;
+    flex: 1;
+    background-color: blanchedalmond;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    gap: 5px;
+    justify-content: space-evenly;
+    box-shadow: inset 0px 5px 10px 1px var(--shadow-color);
+}
+
+.book {
+    height: 300px;
+    margin: 5px;
+    background-color: tan;
+    border-radius: 3px;
+    box-shadow: 5px 5px 10px 1px var(--shadow-color);
 }
