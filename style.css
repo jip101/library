@@ -1,5 +1,6 @@
 :root {
---shadow-color: #2e2d2d;
+    --shadow-color: #2e2d2d;
+    --table-color: tan;
 }
 
 * {
@@ -8,8 +9,9 @@
 
 body {
     margin: 0;
+    margin-right: 40px;
     padding: 0;
-    background-color: aquamarine;
+    background-color: var(--table-color);
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -18,7 +20,7 @@ body {
 header {
     padding: 15px 5px;
     flex: 0.1;
-    background-color: aquamarine;
+    background-color: var(--table-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,10 +29,12 @@ header {
 
 #title {
     align-self: flex-start;
-    font-size: 5em;
+    font-size: 4em;
     font-weight: 900;
     color: rgb(95, 88, 88);
-    padding-left: 30px;
+    padding-left: 40px;
+    padding-bottom: 20px;
+    margin: 0;
     text-shadow: 1px 3px 2px var(--shadow-color);
 }
 
@@ -42,12 +46,13 @@ header {
 main {
     padding: 2em;
     flex: 1;
-    background-color: blanchedalmond;
+    background-color: rgba(51, 18, 18, 0.658);
     display: grid;
     grid-template-columns: repeat(auto-fill, 200px);
     gap: 5px;
     justify-content: space-evenly;
     box-shadow: inset 0px 5px 10px 1px var(--shadow-color);
+    border-top-right-radius: 5px;
 }
 
 .book {
@@ -56,4 +61,39 @@ main {
     background-color: tan;
     border-radius: 3px;
     box-shadow: 5px 5px 10px 1px var(--shadow-color);
+}
+
+#page {
+    display: none;
+    width: 300px;
+    height: 500px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    box-shadow: 5px 5px 10px 1px var(--shadow-color);
+    padding: 30px 0;
+}
+
+#page::before {
+    content: '';
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 40px;
+    background-color: rgba(255,0,0,0.5);
+}
+
+#pattern {
+    background-image: repeating-linear-gradient(white 0px, white 24px, teal 25px);
+    height: 100%;
+    width: 100%;
+}
+
+form {
+    padding-left: 46px;
+    padding-top: 26px;
+    line-height: 25px;
 }
