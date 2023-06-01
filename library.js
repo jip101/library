@@ -10,15 +10,34 @@ function addBookToLibrary(book) {
     myLibrary.push(book)
 }
 
-let addButton = document.querySelector('#addBook')
+let form = document.querySelector('#page')
+let header = document.querySelector('header')
+let main = document.querySelector('main')
 
-addButton.addEventListener('click', () => {
+let addBook = document.querySelector('#addBook')
+
+addBook.addEventListener('click', () => {
     let book = new Book("lotr", "tolkien")
     addBookToLibrary(book)
-    let header = document.querySelector('header')
-    let main = document.querySelector('main')
-    let form = document.querySelector('#page')
     header.style.opacity = '0.35'
     main.style.opacity = '0.35'
     form.style.display = 'block'
+})
+
+let cancelButton = document.querySelector('#cancelButton')
+
+cancelButton.addEventListener('click', () => {
+    form.style.display = 'none'
+    header.style.opacity = '1'
+    main.style.opacity = '1'
+})
+
+let submitButton = document.querySelector('#submitButton')
+submitButton.addEventListener('click', event => {
+    event.preventDefault()
+    let bookInfo = document.querySelectorAll('.bookInfo')
+    bookInfo.forEach(info => {
+        console.log(info.value)
+    })
+    console.log(document.querySelector('form')['read'].value)
 })
