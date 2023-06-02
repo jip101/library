@@ -10,7 +10,7 @@ function addBookToLibrary(book) {
     myLibrary.push(book)
 }
 
-let form = document.querySelector('#page')
+let paper = document.querySelector('#paper')
 let header = document.querySelector('header')
 let main = document.querySelector('main')
 
@@ -21,13 +21,13 @@ addBook.addEventListener('click', () => {
     addBookToLibrary(book)
     header.style.opacity = '0.35'
     main.style.opacity = '0.35'
-    form.style.display = 'block'
+    paper.style.display = 'block'
 })
 
 let cancelButton = document.querySelector('#cancelButton')
 
 cancelButton.addEventListener('click', () => {
-    form.style.display = 'none'
+    paper.style.display = 'none'
     header.style.opacity = '1'
     main.style.opacity = '1'
 })
@@ -35,9 +35,8 @@ cancelButton.addEventListener('click', () => {
 let submitButton = document.querySelector('#submitButton')
 submitButton.addEventListener('click', event => {
     event.preventDefault()
-    let bookInfo = document.querySelectorAll('.bookInfo')
-    bookInfo.forEach(info => {
-        console.log(info.value)
-    })
+    let info = document.querySelector('form')
+    console.log(info)
+    console.log(info['bookTitle'].value)
     console.log(document.querySelector('form')['read'].value)
 })
