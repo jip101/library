@@ -1,4 +1,15 @@
-let myLibrary = [];
+let myLibrary = [
+    {
+        title: "War of the Worlds",
+        author: "H.G. Wells", 
+        read: true
+    },
+    {
+        title: "The Time Machine",
+        author: "H.G. Wells",
+        read: false
+    }
+];
 
 function Book(title, author) {
     this.title = title;
@@ -13,6 +24,7 @@ function addBookToLibrary(book) {
 let paper = document.querySelector('#paper')
 let header = document.querySelector('header')
 let main = document.querySelector('main')
+let form = document.querySelector('form')
 
 let addBook = document.querySelector('#addBook')
 
@@ -30,6 +42,9 @@ cancelButton.addEventListener('click', () => {
     paper.style.display = 'none'
     header.style.opacity = '1'
     main.style.opacity = '1'
+    form.bookTitle.value = ''
+    form.bookAuthor.value = ''
+    form.read.value = 'notRead'
 })
 
 let submitButton = document.querySelector('#submitButton')
