@@ -1,4 +1,4 @@
-let myLibrary = [
+const myLibrary = [
 //    {
 //    title: "War of the Worlds",
 //        author: "H.G. Wells", 
@@ -23,14 +23,31 @@ function Book(title, author, read) {
 //TODO - get form data
 function addBookToLibrary(book) {
     myLibrary.push(book)
+    buildLibrary()
 }
 
-let paper = document.querySelector('#paper')
-let header = document.querySelector('header')
-let main = document.querySelector('main')
-let form = document.querySelector('form')
+function buildLibrary() {
+    myLibrary.forEach(book => {
 
-let addBook = document.querySelector('#addBook')
+        console.log(book.author)
+    })
+}
+
+function resetForm() {
+    paper.style.display = 'none'
+    header.style.opacity = '1'
+    main.style.opacity = '1'
+    form.bookTitle.value = ''
+    form.bookAuthor.value = ''
+    form.read.value = 'notRead'
+}
+
+const paper = document.querySelector('#paper')
+const header = document.querySelector('header')
+const main = document.querySelector('main')
+const form = document.querySelector('form')
+
+const addBook = document.querySelector('#addBook')
 
 addBook.addEventListener('click', () => {
     header.style.opacity = '0.35'
@@ -42,27 +59,21 @@ let cancelButton = document.querySelector('#cancelButton')
 
 cancelButton.addEventListener('click', event => {
     event.preventDefault();
-    paper.style.display = 'none'
-    header.style.opacity = '1'
-    main.style.opacity = '1'
-    form.bookTitle.value = ''
-    form.bookAuthor.value = ''
-    form.read.value = 'notRead'
+    resetForm();
 })
 
 let submitButton = document.querySelector('#submitButton')
 submitButton.addEventListener('click', event => {
-    event.preventDefault()
-    let book = new Book(form.bookTitle.value, form.bookAuthor.value, form.read.value)
-    addBookToLibrary(book)
-    console.log(myLibrary)
-    paper.style.display = 'none'
-    header.style.opacity = '1'
-    main.style.opacity = '1'
-    form.bookTitle.value = ''
-    form.bookAuthor.value = ''
-    form.read.value = 'notRead'
+    event.preventDefault();
+    if (!form.bookTitle.value || !form.bookAuthor.value) {
+        window.alert("Fill in both title and author.");
+        return;
+    }
+    let book = new Book(form.bookTitle.value, form.bookAuthor.value, form.read.value);
+    addBookToLibrary(book);
+    //console.log(myLibrary);
+    resetForm();
 
     for (i=0; i<myLibrary.length; i++) {
-        console.log(myLibrary[i])}
+        console.log(myLibrary[i].author)}
 })
