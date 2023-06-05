@@ -1,20 +1,24 @@
 let myLibrary = [
-    {
-        title: "War of the Worlds",
-        author: "H.G. Wells", 
-        read: true
-    },
-    {
-        title: "The Time Machine",
-        author: "H.G. Wells",
-        read: false
-    }
+//    {
+//    title: "War of the Worlds",
+//        author: "H.G. Wells", 
+//        read: 'read'
+//    },
+//    {
+//        title: "The Time Machine",
+//        author: "H.G. Wells",
+//        read: 'notRead'
+//    }
 ];
 
-function Book(title, author) {
+function Book(title, author, read) {
     this.title = title;
     this.author = author;
+    this.read = read;
+//  this.index = () => myLibrary.indexOf(this)
 }
+
+//Book.prototype.index = () => myLibrary.indexOf(this)
 
 //TODO - get form data
 function addBookToLibrary(book) {
@@ -29,8 +33,6 @@ let form = document.querySelector('form')
 let addBook = document.querySelector('#addBook')
 
 addBook.addEventListener('click', () => {
-    let book = new Book("lotr", "tolkien")
-    addBookToLibrary(book)
     header.style.opacity = '0.35'
     main.style.opacity = '0.35'
     paper.style.display = 'block'
@@ -38,7 +40,8 @@ addBook.addEventListener('click', () => {
 
 let cancelButton = document.querySelector('#cancelButton')
 
-cancelButton.addEventListener('click', () => {
+cancelButton.addEventListener('click', event => {
+    event.preventDefault();
     paper.style.display = 'none'
     header.style.opacity = '1'
     main.style.opacity = '1'
@@ -50,8 +53,16 @@ cancelButton.addEventListener('click', () => {
 let submitButton = document.querySelector('#submitButton')
 submitButton.addEventListener('click', event => {
     event.preventDefault()
-    let info = document.querySelector('form')
-    console.log(info)
-    console.log(info['bookTitle'].value)
-    console.log(document.querySelector('form')['read'].value)
+    let book = new Book(form.bookTitle.value, form.bookAuthor.value, form.read.value)
+    addBookToLibrary(book)
+    console.log(myLibrary)
+    paper.style.display = 'none'
+    header.style.opacity = '1'
+    main.style.opacity = '1'
+    form.bookTitle.value = ''
+    form.bookAuthor.value = ''
+    form.read.value = 'notRead'
+
+    for (i=0; i<myLibrary.length; i++) {
+        console.log(myLibrary[i])}
 })
