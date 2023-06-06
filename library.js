@@ -1,14 +1,14 @@
 const myLibrary = [
-//    {
-//    title: "War of the Worlds",
-//        author: "H.G. Wells", 
-//        read: 'read'
-//    },
-//    {
-//        title: "The Time Machine",
-//        author: "H.G. Wells",
-//        read: 'notRead'
-//    }
+    {
+        title: "War of the Worlds",
+        author: "H.G. Wells", 
+        read: 'read'
+    },
+    {
+        title: "The Time Machine",
+        author: "H.G. Wells",
+        read: 'notRead'
+    }
 ];
 
 function Book(title, author, read) {
@@ -24,11 +24,26 @@ function Book(title, author, read) {
 function addBookToLibrary(book) {
     myLibrary.push(book)
     buildLibrary()
+
 }
 
 function buildLibrary() {
     myLibrary.forEach(book => {
-
+        let prevLib = document.querySelectorAll('.book')
+        prevLib.forEach(book => {
+            book.remove()
+        })
+        let bookDiv = document.createElement('div')
+        bookDiv.className = 'book'
+        main.appendChild(bookDiv)
+        let title = document.createElement('div')
+        title.className = 'title'
+        title.textContent = book.title
+        let author = document.createElement('div')
+        author.className = 'author'
+        author.textContent = book.author
+        bookDiv.appendChild(title)
+        bookDiv.appendChild(author)
         console.log(book.author)
     })
 }
@@ -75,5 +90,9 @@ submitButton.addEventListener('click', event => {
     resetForm();
 
     for (i=0; i<myLibrary.length; i++) {
-        console.log(myLibrary[i].author)}
+//        console.log(myLibrary[i].author)
+    }
 })
+
+
+buildLibrary();
