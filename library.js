@@ -28,11 +28,11 @@ function addBookToLibrary(book) {
 }
 
 function buildLibrary() {
+    let prevLib = document.querySelectorAll('.book')
+    prevLib.forEach(book => {
+        book.remove()
+    })
     myLibrary.forEach(book => {
-        let prevLib = document.querySelectorAll('.book')
-        prevLib.forEach(book => {
-            book.remove()
-        })
         let bookDiv = document.createElement('div')
         bookDiv.className = 'book'
         main.appendChild(bookDiv)
@@ -44,7 +44,6 @@ function buildLibrary() {
         author.textContent = book.author
         bookDiv.appendChild(title)
         bookDiv.appendChild(author)
-        console.log(book.author)
     })
 }
 
