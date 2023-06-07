@@ -42,8 +42,17 @@ function buildLibrary() {
         let author = document.createElement('div')
         author.className = 'author'
         author.textContent = book.author
+        let delButton = document.createElement('div')
+        delButton.className = 'delButton'
+        delButton.textContent = 'X'
+        delButton.addEventListener('click', () => {
+            let index = myLibrary.indexOf(book)
+            myLibrary.splice(index, 1)
+            buildLibrary()
+        })
         bookDiv.appendChild(title)
         bookDiv.appendChild(author)
+        bookDiv.appendChild(delButton)
     })
 }
 

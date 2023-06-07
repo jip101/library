@@ -74,11 +74,28 @@ main {
     font-size: 1.2em;
 }
 
+.delButton {
+    position: absolute;
+    width: 25px;
+    margin-left: 150px;
+    margin-bottom: 235px;
+    padding: 4px;
+    box-sizing: border-box;
+    background-color: darkred;
+    color: grey;
+    border-radius: 3px;
+    font-weight: bolder;
+}
+
+.delButton:hover {
+    cursor: pointer;
+}
+
 .book:hover {
     transform: scale(130%);
     transition: 100ms;
     box-shadow: 15px 15px 20px 10px var(--shadow-color);
-
+    z-index: 2;
 }
 
 #paper {
