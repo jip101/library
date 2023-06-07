@@ -114,7 +114,7 @@ main {
     cursor: pointer;
 }
 
-.book:focus {
+.book:hover {
     transform: scale(130%);
     transition: 100ms;
     box-shadow: 15px 15px 20px 10px var(--shadow-color);
