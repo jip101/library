@@ -36,12 +36,33 @@ function buildLibrary() {
         let bookDiv = document.createElement('div')
         bookDiv.className = 'book'
         main.appendChild(bookDiv)
+
         let title = document.createElement('div')
         title.className = 'title'
         title.textContent = book.title
+
         let author = document.createElement('div')
         author.className = 'author'
         author.textContent = book.author
+
+        let read = document.createElement('div')
+        read.className = book.read
+        if (book.read === 'read') {
+            read.textContent = 'Read'
+        }
+        else {
+            read.textContent = 'Not Read'
+        }
+        read.addEventListener('click', () => {
+            if (book.read === 'read') {
+                book.read = 'notRead'
+            }
+            else {
+                book.read = 'read'
+            }
+            buildLibrary()
+        })
+
         let delButton = document.createElement('div')
         delButton.className = 'delButton'
         delButton.textContent = 'X'
@@ -50,8 +71,10 @@ function buildLibrary() {
             myLibrary.splice(index, 1)
             buildLibrary()
         })
+
         bookDiv.appendChild(title)
         bookDiv.appendChild(author)
+        bookDiv.appendChild(read)
         bookDiv.appendChild(delButton)
     })
 }

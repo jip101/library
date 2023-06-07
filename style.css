@@ -65,7 +65,7 @@ main {
     background-color: tan;
     border-radius: 3px;
     box-shadow: 5px 5px 10px 1px var(--shadow-color);
-    transition: 100ms;
+    transition: 400ms;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -74,11 +74,34 @@ main {
     font-size: 1.2em;
 }
 
+.read, .notRead {
+    position: absolute;
+    text-align: start;
+    height: 24px;
+    padding-top: 4px;
+    padding-left: 4px;
+    margin-bottom: 282px;
+    margin-left: -4px;
+    border-radius: 3px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.read {
+    background-color: green;
+    width: 42px;
+}
+
+.notRead {
+    background-color: red;
+    width: 80px;
+}
+
 .delButton {
     position: absolute;
     width: 25px;
     margin-left: 150px;
-    margin-bottom: 235px;
+    margin-top: -244px;
     padding: 4px;
     box-sizing: border-box;
     background-color: darkred;
@@ -91,7 +114,7 @@ main {
     cursor: pointer;
 }
 
-.book:hover {
+.book:focus {
     transform: scale(130%);
     transition: 100ms;
     box-shadow: 15px 15px 20px 10px var(--shadow-color);
